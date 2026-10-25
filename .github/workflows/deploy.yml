@@ -28,18 +28,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          
 
       - name: Install dependencies
+        working-directory: ./era
         run: npm install
 
       - name: Build TypeScript project
+        working-directory: ./era
         run: npm run build
 
       - name: Upload build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./era/dist
 
   deploy:
     needs: build
